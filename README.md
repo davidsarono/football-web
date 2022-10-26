@@ -1,6 +1,17 @@
-# football-web
+# Football Web
 
-This template should help get you started developing with Vue 3 in Vite.
+This guide explains how to setup and use this Football WEB powered by:
+
+- [Vue3](https://vuejs.org/guide/introduction.html) for UI
+- [Vite](https://vitejs.dev/) for Javascript Bundler
+- [TailwindCSS](https://tailwindcss.com/) for CSS framework
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
+
+## Useful Resource
+- [Vue TypeScript](https://lobotuerto.com/notes/vue-with-typescript-cheat-sheet)
+- [Using TailwindCSS](https://tailwindcss.com/docs/utility-first)
 
 ## Recommended IDE Setup
 
@@ -23,24 +34,29 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
 
+> **Requirements**
+- Node: v16.16.0
+- Yarn: v1.22.19
+
+
 ```sh
-npm install
+yarn install
 ```
 
 ### Compile and Hot-Reload for Development
 
 ```sh
-npm run dev
+yarn dev
 ```
 
 ### Type-Check, Compile and Minify for Production
 
 ```sh
-npm run build
+yarn build
 ```
 
 ### Lint with [ESLint](https://eslint.org/)
 
 ```sh
-npm run lint
+yarn lint
 ```

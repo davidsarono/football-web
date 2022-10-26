@@ -20,7 +20,7 @@ const router = createRouter({
       component: () => import("../views/CompetitionsView.vue"),
     },
     {
-      path: "/teams",
+      path: "/teams/:id",
       name: "teams",
       component: () => import("../views/TeamsView.vue"),
     },

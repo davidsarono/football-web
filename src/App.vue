@@ -2,7 +2,6 @@
   <header>
     <nav class="flex items-center justify-center w-full gap-2 h-20">
       <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/teams">Teams</RouterLink>
       <RouterLink to="/about">About</RouterLink>
     </nav>
   </header>

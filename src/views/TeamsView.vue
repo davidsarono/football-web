@@ -72,8 +72,7 @@ const teams = ref<Team[]>([]);
 const getTeams = async () => {
   isLoading.value = true;
   const data = await fetchService({
-    path: "teams",
-    query: { limit: "100", offset: "100" },
+    path: `competitions/${id.value}/teams`,
   });
   teams.value = data.teams;
   isLoading.value = false;

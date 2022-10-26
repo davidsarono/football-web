@@ -27,7 +27,7 @@
     </div>
 
     <div
-      v-if="!isLoading && team != null"
+      v-else-if="!isLoading && team != null"
       class="flex flex-col md:flex-row gap-8"
     >
       <div

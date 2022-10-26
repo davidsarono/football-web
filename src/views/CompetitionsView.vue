@@ -39,7 +39,7 @@
       <RouterLink
         v-for="area in areas"
         :key="area?.id"
-        :to="`/teams?competition_code=${area?.code}`"
+        :to="`/teams/${area?.code}`"
         class="flex flex-col gap-1 h-[150px] w-[100px] rounded-2xl p-[10px] bg-dark-grey-gradient"
       >
         <img

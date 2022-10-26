@@ -9,27 +9,13 @@
 
     <CircularLoading v-if="isLoading" />
 
-    <div
+    <ItemsCard
       v-else-if="!isLoading && teams.length > 0"
-      class="flex flex-wrap gap-2 items-center justify-center"
-    >
-      <RouterLink
-        v-for="team in teams"
-        :key="team?.id"
-        :to="`/team/${team?.id}`"
-        class="flex flex-col gap-1 h-[150px] w-[100px] rounded-2xl p-[10px] bg-dark-grey-gradient"
-      >
-        <img
-          :src="
-            team?.crest ??
-            'data:image/jpg;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=='
-          "
-          :alt="team?.name"
-          class="aspect-square object-center rounded-2xl w-full"
-        />
-        <p class="text-center truncate">{{ team?.name }}</p>
-      </RouterLink>
-    </div>
+      :data="teams"
+      :to="getToPath"
+      img-src="crest"
+      text="name"
+    />
 
     <p v-else>No Data...</p>
   </main>
@@ -37,6 +23,7 @@
 
 <script setup lang="ts">
 import CircularLoading from "@/components/CircularLoading.vue";
+import ItemsCard from "@/components/ItemsCard.vue";
 import { fetchService } from "@/services";
 import type { Team } from "@/types";
 import { onMounted, ref, watch } from "vue";
@@ -75,4 +62,6 @@ watch(id, () => {
 onMounted(() => {
   getTeams();
 });
+
+const getToPath = (params: Team) => `/team/${params?.id}`;
 </script>

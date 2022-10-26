@@ -9,27 +9,13 @@
 
     <CircularLoading v-if="isLoading" />
 
-    <div
+    <ItemsCard
       v-else-if="!isLoading && areas.length > 0"
-      class="flex flex-wrap gap-2 items-center justify-center"
-    >
-      <RouterLink
-        v-for="area in areas"
-        :key="area?.id"
-        :to="`/teams/${area?.code}`"
-        class="flex flex-col gap-1 h-[150px] w-[100px] rounded-2xl p-[10px] bg-dark-grey-gradient"
-      >
-        <img
-          :src="
-            area?.emblem ??
-            'data:image/jpg;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=='
-          "
-          :alt="area?.name"
-          class="aspect-square object-center rounded-2xl w-full"
-        />
-        <p class="text-center truncate">{{ area?.name }}</p>
-      </RouterLink>
-    </div>
+      :data="areas"
+      :to="getToPath"
+      img-src="emblem"
+      text="name"
+    />
 
     <p v-else>No Data...</p>
   </main>
@@ -37,6 +23,7 @@
 
 <script setup lang="ts">
 import CircularLoading from "@/components/CircularLoading.vue";
+import ItemsCard from "@/components/ItemsCard.vue";
 import { fetchService } from "@/services";
 import type { Competition } from "@/types";
 import { onMounted, ref, watch } from "vue";
@@ -76,4 +63,6 @@ watch(id, () => {
 onMounted(() => {
   getCompetitions(id.value);
 });
+
+const getToPath = (params: Competition) => `/teams/${params?.code}`;
 </script>

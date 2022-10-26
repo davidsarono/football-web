@@ -9,29 +9,19 @@
 
     <CircularLoading v-if="isLoading" />
 
-    <div class="flex flex-wrap gap-2 items-center justify-center">
-      <RouterLink
-        v-for="area in areas"
-        :key="area?.id"
-        :to="`/competitions/${area?.id}`"
-        class="flex flex-col gap-1 h-[150px] w-[100px] rounded-2xl p-[10px] bg-dark-grey-gradient"
-      >
-        <img
-          :src="
-            area?.flag ??
-            'data:image/jpg;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=='
-          "
-          :alt="area?.name"
-          class="aspect-square object-center w-full"
-        />
-        <p class="text-center truncate">{{ area?.name }}</p>
-      </RouterLink>
-    </div>
+    <ItemsCard
+      v-else
+      :data="areas"
+      :to="getToPath"
+      img-src="flag"
+      text="name"
+    />
   </main>
 </template>
 
 <script setup lang="ts">
 import CircularLoading from "@/components/CircularLoading.vue";
+import ItemsCard from "@/components/ItemsCard.vue";
 import { fetchService } from "@/services";
 import type { Area } from "@/types";
 import { onMounted, ref, watch } from "vue";
@@ -63,4 +53,6 @@ watch(area, () => {
 onMounted(() => {
   getAreas();
 });
+
+const getToPath = (params: Area) => `/competitions/${params?.id}`;
 </script>

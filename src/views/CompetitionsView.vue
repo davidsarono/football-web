@@ -36,11 +36,15 @@ const areas = ref<Competition[]>([]);
 
 const getCompetitions = async (areaId: string) => {
   isLoading.value = true;
-  const data = await fetchService({
-    path: "competitions",
-    query: { areas: areaId },
-  });
-  areas.value = data?.competitions;
+  try {
+    const data = await fetchService({
+      path: "competitions",
+      query: { areas: areaId },
+    });
+    areas.value = data?.competitions;
+  } catch (error) {
+    console.log(error);
+  }
   isLoading.value = false;
 };
 

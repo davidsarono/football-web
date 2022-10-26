@@ -12,7 +12,7 @@
         <img :src="team?.crest" :alt="team?.name" width="200" height="200" />
         <h1 class="text-3xl font-bold mb-4">{{ team?.name }}</h1>
 
-        <div class="w-full flex flex-col items-center">
+        <div class="w-full flex flex-col md:items-center">
           <h2 class="text-xl font-semibold text-left mb-2">Detail</h2>
           <div class="grid grid-cols-2">
             <p class="text-sm px-2 font-bold">Founded</p>
@@ -88,8 +88,12 @@ const team = ref<Team | null>(null);
 
 const getTeamDetail = async (teamId: string) => {
   isLoading.value = true;
-  const data = await fetchService({ path: `teams/${teamId}` });
-  team.value = data;
+  try {
+    const data = await fetchService({ path: `teams/${teamId}` });
+    team.value = data;
+  } catch (error) {
+    console.log(error);
+  }
   isLoading.value = false;
 };
 

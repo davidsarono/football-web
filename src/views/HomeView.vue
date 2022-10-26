@@ -31,8 +31,12 @@ const areas = ref<Area[]>([]);
 
 const getAreas = async () => {
   isLoading.value = true;
-  const data = await fetchService({ path: "areas" });
-  areas.value = data.areas?.filter((a: Area) => a?.flag);
+  try {
+    const data = await fetchService({ path: "areas" });
+    areas.value = data.areas?.filter((a: Area) => a?.flag);
+  } catch (error) {
+    console.log(error);
+  }
   isLoading.value = false;
 };
 

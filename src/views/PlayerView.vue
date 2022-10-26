@@ -31,8 +31,12 @@ const player = ref<Player | null>(null);
 
 const getTeamDetail = async (playerId: string) => {
   isLoading.value = true;
-  const data = await fetchService({ path: `persons/${playerId}` });
-  player.value = data;
+  try {
+    const data = await fetchService({ path: `persons/${playerId}` });
+    player.value = data;
+  } catch (error) {
+    console.log(error);
+  }
   isLoading.value = false;
 };
 

@@ -36,10 +36,14 @@ const teams = ref<Team[]>([]);
 
 const getTeams = async () => {
   isLoading.value = true;
-  const data = await fetchService({
-    path: `competitions/${id.value}/teams`,
-  });
-  teams.value = data.teams;
+  try {
+    const data = await fetchService({
+      path: `competitions/${id.value}/teams`,
+    });
+    teams.value = data.teams;
+  } catch (error) {
+    console.log(error);
+  }
   isLoading.value = false;
 };
 

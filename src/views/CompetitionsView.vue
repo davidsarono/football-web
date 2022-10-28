@@ -4,14 +4,14 @@
       placeholder="Search Competition"
       name="area"
       v-model="area"
-      class="mb-4 rounded-sm px-2 text-black placeholder:text-black placeholder:opacity-75"
+      class="mb-6 rounded-md px-2 py-1 text-black placeholder:text-black placeholder:opacity-75 placeholder:text-xs text-xs"
     />
 
     <CircularLoading v-if="isLoading" />
 
     <ItemsCard
-      v-else-if="!isLoading && areas.length > 0"
-      :data="areas"
+      v-else-if="!isLoading && competitions.length > 0"
+      :data="competitions"
       :to="getToPath"
       img-src="emblem"
       text="name"
@@ -32,7 +32,7 @@ import { useRoute } from "vue-router";
 const id = ref(useRoute().params?.id as string);
 
 const isLoading = ref(true);
-const areas = ref<Competition[]>([]);
+const competitions = ref<Competition[]>([]);
 
 const getCompetitions = async (areaId: string) => {
   isLoading.value = true;
@@ -41,7 +41,7 @@ const getCompetitions = async (areaId: string) => {
       path: "competitions",
       query: { areas: areaId },
     });
-    areas.value = data?.competitions;
+    competitions.value = data?.competitions;
   } catch (error) {
     console.log(error);
   }
@@ -52,8 +52,8 @@ const area = ref("");
 
 watch(area, () => {
   if (area.value != "") {
-    areas.value = areas.value.filter((a) =>
-      a.name.toLowerCase().includes(area.value.toLowerCase())
+    competitions.value = competitions.value.filter((c) =>
+      c.name.toLowerCase().includes(area.value.toLowerCase())
     );
   } else {
     getCompetitions(id.value);

@@ -4,17 +4,22 @@
       v-for="item in props.data"
       :key="item?.id"
       :to="to(item)"
-      class="flex flex-col items-center gap-2 h-[150px] w-[100px] rounded-2xl p-[10px] bg-dark-grey-gradient"
+      class="w-[100px] h-[175px]"
     >
-      <img
-        :src="
-          item?.[imgSrc] ??
-          'data:image/jpg;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=='
-        "
-        :alt="item?.[text]"
-        class="aspect-square object-center rounded-2xl w-full"
-      />
-      <p class="text-center text-xs">{{ item?.[text] }}</p>
+      <div
+        class="flex flex-col items-center gap-2 h-[100px] w-[100px] rounded-full p-[10px] bg-dark-grey-gradient"
+      >
+        <img
+          v-lazy="
+            item?.[imgSrc] ??
+            'data:image/jpg;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=='
+          "
+          :alt="item?.[text]"
+          width=""
+          class="aspect-square object-center rounded-full w-full"
+        />
+      </div>
+      <p class="text-center text-xs mt-4">{{ item?.[text] }}</p>
     </RouterLink>
   </div>
 </template>

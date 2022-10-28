@@ -9,8 +9,8 @@
       <div
         class="w-full flex flex-col items-center md:justify-center md:w-[750px]"
       >
-        <img :src="team?.crest" :alt="team?.name" width="200" height="200" />
-        <h1 class="text-3xl font-bold mb-4">{{ team?.name }}</h1>
+        <img v-lazy="team?.crest" :alt="team?.name" width="200" height="200" />
+        <h1 class="text-3xl font-bold my-4">{{ team?.name }}</h1>
 
         <div class="w-full flex flex-col md:items-center">
           <h2 class="text-xl font-semibold text-left mb-2">Detail</h2>
@@ -27,11 +27,11 @@
 
       <div class="w-full">
         <h2 class="text-xl font-semibold text-left mb-2">Players</h2>
-        <ul class="px-2 md:px-0 flex flex-col md:flex-row md:flex-wrap gap-2">
+        <ul class="px-2 md:px-0 flex flex-col md:flex-row md:flex-wrap gap-3">
           <li
             v-for="player in team?.squad"
             :key="player.id"
-            class="flex flex-col gap-1 rounded-2xl p-[10px] bg-dark-grey-gradient"
+            class="flex flex-col gap-3 rounded-2xl p-[10px] w-[295px] bg-dark-grey-gradient"
           >
             <RouterLink :to="`/player/${player?.id}`">
               <div class="flex justify-between items-center">

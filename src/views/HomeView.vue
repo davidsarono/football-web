@@ -4,18 +4,20 @@
       placeholder="Search Area"
       name="area"
       v-model="area"
-      class="mb-4 rounded-sm px-2 text-black placeholder:text-black placeholder:opacity-75"
+      class="mb-6 rounded-md px-2 py-1 text-black placeholder:text-black placeholder:opacity-75 placeholder:text-xs text-xs"
     />
 
     <CircularLoading v-if="isLoading" />
 
     <ItemsCard
-      v-else
+      v-else-if="!isLoading && areas.length > 0"
       :data="areas"
       :to="getToPath"
       img-src="flag"
       text="name"
     />
+
+    <p v-else>No Data...</p>
   </main>
 </template>
 

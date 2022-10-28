@@ -34,6 +34,10 @@ const router = createRouter({
       name: "player",
       component: () => import("../views/PlayerView.vue"),
     },
+    {
+      path: "/:pathMatch(.*)*",
+      component: () => import("../views/NotFoundView.vue"),
+    },
   ],
 });
 

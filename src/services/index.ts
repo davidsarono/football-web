@@ -1,6 +1,6 @@
-type Params = { path: string; id?: string; query?: Record<string, string> };
+import type { FetchServiceParams } from "@/types";
 
-const fetchService = async (params: Params) => {
+const fetchService = async (params: FetchServiceParams) => {
   let url = new URL(import.meta.env.VITE_API_BASE_URL);
 
   if (params.path) {

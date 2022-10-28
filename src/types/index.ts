@@ -1,3 +1,9 @@
+type FetchServiceParams = {
+  path: string;
+  id?: string;
+  query?: Record<string, string>;
+};
+
 type Area = {
   id: number;
   flag: string | null;
@@ -29,9 +35,9 @@ type Player = {
   position: string;
   dateOfBirth: string;
   nationality: string;
-  firstName: "Djibril";
-  lastName: "Sow";
-  shirtNumber: 8;
+  firstName: string;
+  lastName: string;
+  shirtNumber: number;
   currentTeam: Team;
 };
 
@@ -53,4 +59,4 @@ type Team = {
   lastUpdated: string;
 };
 
-export type { Area, Competition, Player, Team };
+export type { FetchServiceParams, Area, Competition, Player, Team };
